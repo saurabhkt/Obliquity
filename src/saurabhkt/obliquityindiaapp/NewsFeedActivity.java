@@ -28,6 +28,8 @@ public class NewsFeedActivity extends Activity {
         setContentView(R.layout.newsfeed);
         
         dHandler = new DataHandler();
+        statusText = (TextView)findViewById(R.id.newsFeedStatus);
+        statusText.setText("Downloading Data...");
         setValues();
     
     }
