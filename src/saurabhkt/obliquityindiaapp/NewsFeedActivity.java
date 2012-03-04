@@ -83,6 +83,8 @@ public class NewsFeedActivity extends Activity {
         FeedListAdapter adapter = new FeedListAdapter(NewsFeedActivity.this, values);
 		ListView lView = (ListView)findViewById(R.id.list);
 		lView.setAdapter(adapter);	
+		
+		statusText.setVisibility(0);
     }
     
 }
