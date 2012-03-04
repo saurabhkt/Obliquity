@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/blackdesignbackground"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/idobliquitylogoblack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/obliquitylogoblack" />
+
+    <Button
+        android:id="@+id/idnewsfeedbutton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idobliquitylogoblack"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="@string/newsfeed" />
+
+    <Button
+        android:id="@+id/idcalendarbutton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/idnewsfeedbutton"
+        android:layout_below="@+id/idnewsfeedbutton"
+        android:layout_marginTop="26dp"
+        android:text="@string/calendar" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/advert" />
+
+    <Button
+        android:id="@+id/idaboutobliquitybutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="17dp"
+        android:text="@string/aboutobliquity" />
+
+    <Button
+        android:id="@+id/idaboutxdbutton"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/idaboutobliquitybutton"
+        android:layout_alignBottom="@+id/idaboutobliquitybutton"
+        android:layout_alignParentRight="true"
+        android:text="@string/xdev" />
+
+</RelativeLayout>

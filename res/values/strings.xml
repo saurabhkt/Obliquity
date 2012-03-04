@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Obliquity India</string>
+    <string name="newsfeed">News Feed</string>
+    <string name="calendar">Calendar</string>
+    <string name="aboutobliquity">We\'re Obliquity</string>
+    <string name="xdev">XDev</string>
+    <string name="xdevis">XDev is:  Ahmed Aeon Axan | Saurabh KT | Ananth Jayaraj</string>
+    <string name="advert">Teacher\'s | Sauza | Rices Inc. | Pebble | F-bar</string>
+    <string name="newsFeedStatus">Downloading data..</string>
+
+</resources>
