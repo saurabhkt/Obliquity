@@ -38,7 +38,7 @@ public class NewsFeedActivity extends Activity {
     	values = new ArrayList<String>();     
     	
     	if(dHandler.completed()) {
-    		downloadCallback();
+    		downloadCallback(false);
     		return;
     	}
     	
@@ -47,7 +47,7 @@ public class NewsFeedActivity extends Activity {
 			@Override
 			public void handleMessage(Message message) {
 				Log.i(TAG, "Download completed, Thread returns");
-				downloadCallback();
+				downloadCallback(false);
 			}
 		};
 		
@@ -70,21 +70,29 @@ public class NewsFeedActivity extends Activity {
     	
     }
     
-    public void downloadCallback() {
+    public void downloadCallback(boolean memory) {
     	
-    	List<Feeds> feeds = new ArrayList<Feeds>();
-        feeds = dHandler.getFeeds();
-        
-	        for(Feeds feed : feeds)
-	        {
-	        	values.add(feed.message);
-	        }
-	        
-        FeedListAdapter adapter = new FeedListAdapter(NewsFeedActivity.this, values);
-		ListView lView = (ListView)findViewById(R.id.list);
-		lView.setAdapter(adapter);	
-		
-		statusText.setVisibility(0);
+    	if(dHandler.isSuccess() || memory) {
+    	
+			List<Feeds> feeds = new ArrayList<Feeds>();
+		    feeds = dHandler.getFeeds();
+		    
+		        for(Feeds feed : feeds)
+		        {
+		        	values.add(feed.message);
+		        }
+		        
+		    FeedListAdapter adapter = new FeedListAdapter(NewsFeedActivity.this, values);
+			ListView lView = (ListView)findViewById(R.id.list);
+			lView.setAdapter(adapter);	
+			
+			statusText.setVisibility(0);
+    	
+    	} else {
+    		
+    		statusText.setText(dHandler.getErrorText());
+    		downloadCallback(true);
+    	}
     }
     
 }
