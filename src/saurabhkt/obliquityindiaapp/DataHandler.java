@@ -35,6 +35,7 @@ public class DataHandler {
 	private static int lastfID;
 	
 	private static Context context;
+	private static String rawJSON;
 	
 	private static boolean completed = false;
 	private static boolean success = false;
@@ -84,15 +85,6 @@ public class DataHandler {
 		
 		Thread thread = new Thread() {
 			public void run() {
-				try {
-					/*
-					 * WARNING DEBUG STATEMENT
-					 */
-					Thread.sleep(4000); 
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				Log.i("DataHandlerClass", "Thread sleep complete");
 				refreshResponse(null);
 				Log.i("DataHandlerClass", "Download Complete");
@@ -163,7 +155,7 @@ public class DataHandler {
 	private static String retrieveJson(String url) throws ConnectTimeoutException {
     	
     	HttpParams httpParameters = new BasicHttpParams();
-    	int timeoutConnection = 3000;
+    	int timeoutConnection = 6000;
     	HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
     	int timeoutSocket = 5000;
     	HttpConnectionParams.setSoTimeout(httpParameters, timeoutSocket);
@@ -196,8 +188,8 @@ public class DataHandler {
     		}
     		
     		line = total.toString();
-    		saveData(line);
-    		Log.i(TAG, "returning json" + line);
+    		Log.i(TAG, "downloaded json : " + line);
+    		rawJSON = line;
     		success = true;
     		return line;
     	
@@ -206,20 +198,23 @@ public class DataHandler {
     		Log.w(TAG, "Error IOException thrown : " + e.getMessage());
     		errorText = "Internet Access not available.";
     	} catch (Exception e) {
-    		Log.w(TAG, "HTTP Exception : " + e.getMessage());
+     		Log.w(TAG, "HTTP Exception : " + e.toString());
     	}
-    	
+ 	
     	completed = true;
     	success = false;
     	return null;
     	
     }
 	
-	private static void saveData(String json) {
+	public static void saveData() {
+		if(rawJSON == null)
+			return;
+		
 		Log.i(TAG, "Saving JSON data");
 		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
-		editor.putString(JSON_CACHE, json);
+		editor.putString(JSON_CACHE, rawJSON);
 		
 		editor.commit();
 	}
