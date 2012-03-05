@@ -84,15 +84,6 @@ public class DataHandler {
 		
 		Thread thread = new Thread() {
 			public void run() {
-				try {
-					/*
-					 * WARNING DEBUG STATEMENT
-					 */
-					Thread.sleep(4000); 
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				Log.i("DataHandlerClass", "Thread sleep complete");
 				refreshResponse(null);
 				Log.i("DataHandlerClass", "Download Complete");
