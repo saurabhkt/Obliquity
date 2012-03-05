@@ -85,6 +85,7 @@ public class NewsFeedActivity extends Activity {
     	if(dHandler.isSuccess() || memory) {
     		
 			if(dHandler.isSuccess()) {
+				DataHandler.saveData();
 				feeds = dHandler.getFeeds();
 				Log.i(TAG, "feeds set from getFeeds");
 			} else {
